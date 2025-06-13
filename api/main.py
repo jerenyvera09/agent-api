@@ -34,3 +34,10 @@ def create_app() -> FastAPI:
 
 # Create a FastAPI app
 app = create_app()
+
+# Entry point for Cloud Run.
+if __name__ == "__main__":
+    import os
+    import uvicorn
+
+    uvicorn.run("nombre_del_archivo:app", host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
